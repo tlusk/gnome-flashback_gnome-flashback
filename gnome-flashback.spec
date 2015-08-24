@@ -1,6 +1,6 @@
 Name:           gnome-flashback
 Version:        3.17.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Classic GNOME session
 
 License:        GPLv3+
@@ -9,6 +9,7 @@ Source0:        http://download.gnome.org/sources/%{name}/3.17/%{name}-%{version
 # taken from polkit-gnome, license is LGPLv2+, requires because of
 # http://lists.fedoraproject.org/pipermail/devel-announce/2011-February/000758.html
 Source1:        polkit-gnome-authentication-agent-1.desktop
+Patch2:         0002-display-config-ignore-outputs-modes.patch
 
 BuildRequires:  gnome-common
 BuildRequires:  gettext-devel
@@ -45,6 +46,7 @@ by integrating recent changes of the GNOME libraries.
 
 %prep
 %setup -q
+%patch2 -p1
 
 
 %build
@@ -88,6 +90,9 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 %{_datadir}/xsessions/gnome-flashback-metacity.desktop
 
 %changelog
+* Mon Aug 24 2015 Yaakov Selkowitz <yselkowi@redhat.com> - 3.17.2-2
+- Fix crash in display-config (BGO#753927)
+
 * Wed Jul 15 2015 Yaakov Selkowitz <yselkowi@redhat.com> - 3.17.2-1
 - Unstable version bump
 
