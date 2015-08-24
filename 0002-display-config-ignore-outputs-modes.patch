@@ -1,0 +1,23 @@
+From c375d0f042dd16babf6c930a626e1a69f58f3d85 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alberts=20Muktup=C4=81vels?= <alberts.muktupavels@gmail.com>
+Date: Sun, 23 Aug 2015 13:59:36 +0300
+Subject: display-config: ignore outputs that has no modes
+
+https://bugzilla.gnome.org/show_bug.cgi?id=753927
+
+diff --git a/gnome-flashback/libdisplay-config/flashback-monitor-manager.c b/gnome-flashback/libdisplay-config/flashback-monitor-manager.c
+index 55470ce..29f80ef 100644
+--- a/gnome-flashback/libdisplay-config/flashback-monitor-manager.c
++++ b/gnome-flashback/libdisplay-config/flashback-monitor-manager.c
+@@ -1258,7 +1258,7 @@ read_current_config (FlashbackMonitorManager *manager)
+ 
+       meta_output = &manager->outputs[n_actual_outputs];
+ 
+-      if (output->connection != RR_Disconnected)
++      if (output->connection != RR_Disconnected && output->nmode != 0)
+         {
+           GBytes *edid;
+ 
+-- 
+cgit v0.10.2
+
