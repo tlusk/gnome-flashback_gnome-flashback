@@ -40,6 +40,7 @@ Requires:       gnome-keyring
 Requires:       gnome-screensaver
 Requires:       gnome-settings-daemon
 Requires:       gnome-session
+Requires:       network-manager-applet
 
 %description
 GNOME Flashback is a session for GNOME 3 which was initially called
@@ -76,12 +77,16 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
 %files -f %{name}.lang
 %doc COPYING NEWS
+%{_sysconfdir}/xdg/autostart/gnome-flashback-nm-applet.desktop
+%{_sysconfdir}/xdg/autostart/gnome-flashback-screensaver.desktop
 %{_sysconfdir}/xdg/menus/gnome-flashback-applications.menu
 %{_bindir}/gnome-flashback
 %{_libexecdir}/gnome-flashback-compiz
 %{_libexecdir}/gnome-flashback-metacity
 %{_datadir}/applications/gnome-flashback-init.desktop
 %{_datadir}/applications/gnome-flashback.desktop
+%{_datadir}/desktop-directories/X-GNOME-Flashback-Settings.directory
+%{_datadir}/desktop-directories/X-GNOME-Flashback-Settings-System.directory
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-flashback.gschema.xml
 %{_datadir}/gnome-session/sessions/gnome-flashback-compiz.session
 %{_datadir}/gnome-session/sessions/gnome-flashback-metacity.session
