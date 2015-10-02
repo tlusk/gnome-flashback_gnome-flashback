@@ -1,15 +1,11 @@
 Name:           gnome-flashback
-Version:        3.17.2
-Release:        2%{?dist}
+Version:        3.18.0
+Release:        1%{?dist}
 Summary:        Classic GNOME session
 
 License:        GPLv3+
 URL:            https://wiki.gnome.org/Projects/GnomeFlashback
-Source0:        http://download.gnome.org/sources/%{name}/3.17/%{name}-%{version}.tar.xz
-# taken from polkit-gnome, license is LGPLv2+, requires because of
-# http://lists.fedoraproject.org/pipermail/devel-announce/2011-February/000758.html
-Source1:        polkit-gnome-authentication-agent-1.desktop
-Patch2:         0002-display-config-ignore-outputs-modes.patch
+Source0:        http://download.gnome.org/sources/%{name}/3.18/%{name}-%{version}.tar.xz
 
 BuildRequires:  gnome-common
 BuildRequires:  gettext-devel
@@ -18,14 +14,24 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.2
+BuildRequires:  pkgconfig(gnome-bluetooth-1.0)
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.12.0
+BuildRequires:  pkgconfig(ibus-1.0) >= 1.5.2
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.13
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
+BuildRequires:  pkgconfig(polkit-agent-1) >= 0.97
+BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.97
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(x11-xcb)
+BuildRequires:  pkgconfig(xcb-randr)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xkbcommon-x11)
+BuildRequires:  pkgconfig(xkbfile)
+BuildRequires:  pkgconfig(xkeyboard-config)
+BuildRequires:  pkgconfig(xrandr)
 Requires:       gnome-panel
 Requires:       gnome-applets
 Requires:       metacity
@@ -34,7 +40,6 @@ Requires:       gnome-keyring
 Requires:       gnome-screensaver
 Requires:       gnome-settings-daemon
 Requires:       gnome-session
-Requires:       polkit-gnome
 
 %description
 GNOME Flashback is a session for GNOME 3 which was initially called
@@ -46,7 +51,6 @@ by integrating recent changes of the GNOME libraries.
 
 %prep
 %setup -q
-%patch2 -p1
 
 
 %build
@@ -56,10 +60,6 @@ make %{?_smp_mflags}
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
-# install autostart file for polkit-gnome-authentication-agent-1
-# cannot use desktop-file-install due to OnlyShowIn=GNOME-Flashback
-install -D -m 0644 %{SOURCE1} \
-	$RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/%{name}-polkit-gnome-authentication-agent-1.desktop
 
 %find_lang %{name}
 
@@ -76,7 +76,6 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
 %files -f %{name}.lang
 %doc COPYING NEWS
-%{_sysconfdir}/xdg/autostart/gnome-flashback-polkit-gnome-authentication-agent-1.desktop
 %{_sysconfdir}/xdg/menus/gnome-flashback-applications.menu
 %{_bindir}/gnome-flashback
 %{_libexecdir}/gnome-flashback-compiz
@@ -90,6 +89,9 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 %{_datadir}/xsessions/gnome-flashback-metacity.desktop
 
 %changelog
+* Fri Oct 02 2015 Yaakov Selkowitz <yselkowi@redhat.com> - 3.18.0-1
+- Update for GNOME Flashback 3.18.
+
 * Mon Aug 24 2015 Yaakov Selkowitz <yselkowi@redhat.com> - 3.17.2-2
 - Fix crash in display-config (BGO#753927)
 
