@@ -1,5 +1,5 @@
 Name:           gnome-flashback
-Version:        3.18.0
+Version:        3.18.1
 Release:        1%{?dist}
 Summary:        Classic GNOME session
 
@@ -94,6 +94,9 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 %{_datadir}/xsessions/gnome-flashback-metacity.desktop
 
 %changelog
+* Thu Oct 15 2015 Yaakov Selkowitz <yselkowi@redhat.com> - 3.18.1-1
+- Update to 3.18.1
+
 * Fri Oct 02 2015 Yaakov Selkowitz <yselkowi@redhat.com> - 3.18.0-1
 - Update for GNOME Flashback 3.18.
 
