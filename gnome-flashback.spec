@@ -1,11 +1,11 @@
 Name:           gnome-flashback
-Version:        3.18.1
+Version:        3.20.0
 Release:        1%{?dist}
 Summary:        Classic GNOME session
 
 License:        GPLv3+
 URL:            https://wiki.gnome.org/Projects/GnomeFlashback
-Source0:        http://download.gnome.org/sources/%{name}/3.18/%{name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/%{name}/3.20/%{name}-%{version}.tar.xz
 
 BuildRequires:  gnome-common
 BuildRequires:  gettext-devel
@@ -13,7 +13,7 @@ BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.2
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.5
 BuildRequires:  pkgconfig(gnome-bluetooth-1.0)
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.12.0
@@ -94,6 +94,9 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 %{_datadir}/xsessions/gnome-flashback-metacity.desktop
 
 %changelog
+* Thu Apr 14 2016 Yaakov Selkowitz <yselkowi@redhat.com> - 3.20.0-1
+- new version for GNOME Flashback 3.20.
+
 * Thu Oct 15 2015 Yaakov Selkowitz <yselkowi@redhat.com> - 3.18.1-1
 - Update to 3.18.1
 
