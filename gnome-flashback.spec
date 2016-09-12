@@ -94,7 +94,7 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 %{_datadir}/xsessions/gnome-flashback-metacity.desktop
 
 %changelog
-* Mon Jul 25 2016 Yaakov Selkowitz <yselkowi@redhat.com> - 3.20.2-1
+* Mon Sep 12 2016 Yaakov Selkowitz <yselkowi@redhat.com> - 3.20.2-1
 - new version
 
 * Wed May 18 2016 Yaakov Selkowitz <yselkowi@redhat.com> - 3.20.1-1
