@@ -1,11 +1,11 @@
 Name:           gnome-flashback
-Version:        3.20.2
+Version:        3.22.0
 Release:        1%{?dist}
 Summary:        Classic GNOME session
 
 License:        GPLv3+
 URL:            https://wiki.gnome.org/Projects/GnomeFlashback
-Source0:        http://download.gnome.org/sources/%{name}/3.20/%{name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/%{name}/3.22/%{name}-%{version}.tar.xz
 
 BuildRequires:  gnome-common
 BuildRequires:  gettext-devel
@@ -16,7 +16,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.5
 BuildRequires:  pkgconfig(gnome-bluetooth-1.0)
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.12.0
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.12.0
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.21.4
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.5.2
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.13
 BuildRequires:  pkgconfig(libpulse)
@@ -28,6 +28,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb-randr)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xi) >= 1.6.0
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xkeyboard-config)
@@ -94,6 +95,9 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 %{_datadir}/xsessions/gnome-flashback-metacity.desktop
 
 %changelog
+* Thu Oct 06 2016 Yaakov Selkowitz <yselkowi@redhat.com> - 3.22.0-1
+- new version
+
 * Mon Sep 12 2016 Yaakov Selkowitz <yselkowi@redhat.com> - 3.20.2-1
 - new version
 
