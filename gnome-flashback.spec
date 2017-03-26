@@ -1,5 +1,5 @@
 Name:           gnome-flashback
-Version:        3.22.0
+Version:        3.22.1
 Release:        1%{?dist}
 Summary:        Classic GNOME session
 
@@ -36,7 +36,6 @@ BuildRequires:  pkgconfig(xrandr)
 Requires:       gnome-panel
 Requires:       gnome-applets
 Requires:       metacity
-Requires:       notification-daemon
 Requires:       gnome-keyring
 Requires:       gnome-screensaver
 Requires:       gnome-settings-daemon
@@ -95,6 +94,9 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 %{_datadir}/xsessions/gnome-flashback-metacity.desktop
 
 %changelog
+* Sun Mar 26 2017 Yaakov Selkowitz <yselkowi@redhat.com> - 3.22.1-1
+- new version
+
 * Thu Oct 06 2016 Yaakov Selkowitz <yselkowi@redhat.com> - 3.22.0-1
 - new version
 
