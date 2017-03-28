@@ -1,11 +1,11 @@
 Name:           gnome-flashback
-Version:        3.22.1
+Version:        3.24.0
 Release:        1%{?dist}
 Summary:        Classic GNOME session
 
 License:        GPLv3+
 URL:            https://wiki.gnome.org/Projects/GnomeFlashback
-Source0:        http://download.gnome.org/sources/%{name}/3.22/%{name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/%{name}/3.24/%{name}-%{version}.tar.xz
 
 BuildRequires:  gnome-common
 BuildRequires:  gettext-devel
@@ -28,6 +28,7 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb-randr)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xi) >= 1.6.0
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xkbfile)
@@ -35,11 +36,12 @@ BuildRequires:  pkgconfig(xkeyboard-config)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       gnome-panel
 Requires:       gnome-applets
-Requires:       metacity
 Requires:       gnome-keyring
 Requires:       gnome-screensaver
 Requires:       gnome-settings-daemon
 Requires:       gnome-session
+Requires:       metacity
+Requires:       nautilus
 Requires:       network-manager-applet
 
 %description
@@ -94,6 +96,9 @@ glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 %{_datadir}/xsessions/gnome-flashback-metacity.desktop
 
 %changelog
+* Tue Mar 28 2017 Yaakov Selkowitz <yselkowi@redhat.com> - 3.24.0-1
+- new version
+
 * Sun Mar 26 2017 Yaakov Selkowitz <yselkowi@redhat.com> - 3.22.1-1
 - new version
 
