@@ -1,0 +1,24 @@
+diff -Naur a/gnome-flashback/libinput-sources/gf-input-source-manager.c b/gnome-flashback/libinput-sources/gf-input-source-manager.c
+--- a/gnome-flashback/libinput-sources/gf-input-source-manager.c	2017-03-13 12:27:03.000000000 -0400
++++ b/gnome-flashback/libinput-sources/gf-input-source-manager.c	2017-08-29 19:27:44.520068095 -0400
+@@ -35,6 +35,20 @@
+ #define KEY_SWITCH_INPUT_SOURCE "switch-input-source"
+ #define KEY_SWITCH_INPUT_SOURCE_BACKWARD "switch-input-source-backward"
+ 
++typedef enum
++{
++  IBUS_INPUT_PURPOSE_FREE_FORM,
++  IBUS_INPUT_PURPOSE_ALPHA,
++  IBUS_INPUT_PURPOSE_DIGITS,
++  IBUS_INPUT_PURPOSE_NUMBER,
++  IBUS_INPUT_PURPOSE_PHONE,
++  IBUS_INPUT_PURPOSE_URL,
++  IBUS_INPUT_PURPOSE_EMAIL,
++  IBUS_INPUT_PURPOSE_NAME,
++  IBUS_INPUT_PURPOSE_PASSWORD,
++  IBUS_INPUT_PURPOSE_PIN
++} IBusInputPurpose;
++
+ typedef struct _SourceInfo SourceInfo;
+ struct _SourceInfo
+ {
